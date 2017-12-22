@@ -33,3 +33,41 @@ function type(d) {
    return d;
  }
 ```
+
+## Scales
+
+```js
+//In D3 we use scale functions to convert our data space to pixel spaces.
+//d3.scale.linear() will return an instance of a scale.
+var scale = d3.scale.linear();
+//now we can set our data range of our dataset and pass it as an array [min, max]
+scale.domain([0,1]); // Data space
+scale.range([0,100]); //pixel space
+
+//after configuring above, here you see when we call the scale function and pass the domain value, it returns the data value in the pixel range.
+console.log(scale(0)); // prints 0
+console.log(scale(0.5)); // prints 50
+console.log(scale(1)); //prints 100
+```
+## Method chaining in D3
+
+In D3 you can chain all the methods and call them one after the another. So the above code could have been written as
+
+```js
+// All could be called right after another.
+var scale  = d3.scale.linear().domain([0,1]).range([0,100]);
+
+console.log(scale(0)); // prints 0
+console.log(scale(0.5)); // prints 50
+console.log(scale(1)); //prints 100
+
+```
+## getters and setters
+We can also call the domain and range functions without any arguments and we will get the values that have been set.
+
+```js
+var scale  = d3.scale.linear().domain([0,1]).range([0,100]);
+
+console.log(scale.domain()); // prints [0,1]
+console.log(scale.range()); // prints [0,100]
+```
