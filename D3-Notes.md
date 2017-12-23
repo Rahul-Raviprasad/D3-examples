@@ -71,3 +71,10 @@ var scale  = d3.scale.linear().domain([0,1]).range([0,100]);
 console.log(scale.domain()); // prints [0,1]
 console.log(scale.range()); // prints [0,100]
 ```
+
+## Ordinal scales
+These deal with data that have discrete values
+
+```js
+var scale = d3.scale().ordinal();
+```
