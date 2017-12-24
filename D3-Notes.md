@@ -83,3 +83,27 @@ console.log(scale('B')); // prints Banana
 console.log(scale('C')); // prints Coconut
 
 ```
+
+## Range points
+This will automatically sub divide the data according to the domain.
+
+```js
+var scale = d3.scale().ordinal().domain(['A','B','C','D']).rangePoints([0,100]);
+
+console.log(scale('A')); // prints 0
+console.log(scale('B')); // prints 33.3333...
+console.log(scale('C')); // prints 66.666....
+console.log(scale('A')); // prints 100
+```
+
+if you want a crisp line you can use rangeRoundPoints which will round off the numbers
+
+```js
+var scale = d3.scale().ordinal().domain(['A','B','C','D']).rangeRoundPoints([0,100]);
+
+console.log(scale('A')); // prints 0
+console.log(scale('B')); // prints 34
+console.log(scale('C')); // prints 67
+console.log(scale('A')); // prints 100
+```
+## How to create DOM elements in D3
