@@ -107,3 +107,49 @@ console.log(scale('C')); // prints 67
 console.log(scale('A')); // prints 100
 ```
 ## How to create DOM elements in D3
+
+The select method takes
+
+```js
+var svg = d3.select("body").append("svg");
+
+svg.attr("width", 250);
+svg.attr("height", 250);
+
+var rect = svg.append("rect");
+
+rect.attr("x", 50);
+rect.attr("y", 50);
+rect.attr("width", 20);
+rect.attr("height", 20);
+
+```
+
+## selectAll().data().enter().append() pipeline
+
+Here we do another d3 trick. Where we try to select all the "rect" in the svg. But as you will see there are none. then data is added to this svg [1,2,3,4,5] followed  by enter and append("rect") methods. So what it does is if data is present then ignores it but if data is not present then it appends the rect for the data. As we know the svg didn't have any rect so rect is appended for all 5 data, hence drawing 5 rectangles on the screen.
+
+```js
+var data = [1,2,3,4,5];
+
+var scale = d3.scale.linear()
+            .domain(1,5)
+            .range(0,200);
+
+var svg = d3.select("body").append("svg");
+
+svg.attr("width", 250);
+svg.attr("height", 250);
+
+svg.selectAll("rect")
+   .data(data)
+   .enter()
+   .append("rect")
+   .attr("x", function(d) { return scale(d);}) // generally written as .attr("x", scale)
+   .attr("y", 50)
+   .attr("width", 20)
+   .attr("height", 20);
+```
+
+
+for the x attribute we are calling a function scale from a function which has the only purpose to call it. So we can replace it by scale directly like this .attr("x", scale)
