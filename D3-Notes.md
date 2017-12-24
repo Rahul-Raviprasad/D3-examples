@@ -59,7 +59,7 @@ var scale  = d3.scale.linear().domain([0,1]).range([0,100]);
 
 console.log(scale(0)); // prints 0
 console.log(scale(0.5)); // prints 50
-console.log(scale(1)); //prints 100
+console.log(scale(1)); // prints 100
 
 ```
 ## getters and setters
@@ -76,5 +76,10 @@ console.log(scale.range()); // prints [0,100]
 These deal with data that have discrete values
 
 ```js
-var scale = d3.scale().ordinal();
+var scale = d3.scale().ordinal().domain(['A','B','C']).range("Apple", "Banana", "Coconut");
+
+console.log(scale('A')); // prints Apple
+console.log(scale('B')); // prints Banana
+console.log(scale('C')); // prints Coconut
+
 ```
