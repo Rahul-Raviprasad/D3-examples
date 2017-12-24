@@ -153,3 +153,36 @@ svg.selectAll("rect")
 
 
 for the x attribute we are calling a function scale from a function which has the only purpose to call it. So we can replace it by scale directly like this .attr("x", scale)
+
+Now to prove that the enter().append() works only on data which doesn't correspond to a element, see the following.
+
+```js
+
+var scale = d3.scale.linear()
+            .domain(1,5)
+            .range(0,200);
+
+var svg = d3.select("body").append("svg");
+
+svg.attr("width", 250);
+svg.attr("height", 250);
+
+function render(data, color) {
+  svg.selectAll("rect")
+     .data(data)
+     .enter()
+     .append("rect")
+     .attr("x", function(d) { return scale(d);}) // generally written as .attr("x", scale)
+     .attr("y", 50)
+     .attr("width", 20)
+     .attr("height", 20)
+     .attr("fill", color);
+}
+
+render([1,2,3], "red");
+
+render([1,2,3,4,5], "blue");
+
+```
+
+after the second render one might expect all the rectangles to be blue. But it isn't, because when we did selectAll("rect") the second time there were already 3 rect available on the svg. So enter() make append to execute only only on the last to data 4 and 5. That why you will see 3 red and 2 blue rectangles.
