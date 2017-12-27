@@ -186,3 +186,55 @@ render([1,2,3,4,5], "blue");
 ```
 
 after the second render one might expect all the rectangles to be blue. But it isn't, because when we did selectAll("rect") the second time there were already 3 rect available on the svg. So enter() make append to execute only only on the last to data 4 and 5. That why you will see 3 red and 2 blue rectangles.
+
+
+# Render with data binding, enter, update, and exit stages
+The render could be written in a better way as follows
+
+```js
+function render(data, color) {
+  // bind data
+  var rects = svg.selectAll("rect")
+                .data(data);
+
+  // now this won't execute every time as render is called, so its more like a static phase
+  // enter
+  rects.enter().append("rect");
+
+  // update
+  rect.attr("x", scale)
+  .attr("y", 50)
+  .attr("width", 20)
+  .attr("height", 20)
+  .attr("fill", color)
+
+  //exit
+  rects.exit().remove();
+}
+
+render([1,2,3], "red");
+
+render([1,2,3,4,5], "blue");
+
+render([1,2], "green"); // now beacause of the exit function above only 2 rects will be drawn.
+
+```
+
+another example
+
+```js
+var svg =  d3.select(body).append("svg");
+svg.attr("width", 250);
+svg.attr("height", 250);
+
+function render(data) {
+  // Bind data
+  var circles = svg.selectAll("circle").data(data);
+
+  // Enter
+  circles.enter().append("circle").attr("r", 10);
+
+  // Update
+  circles.
+}
+```
