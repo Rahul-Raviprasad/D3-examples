@@ -235,6 +235,6 @@ function render(data) {
   circles.enter().append("circle").attr("r", 10);
 
   // Update
-  circles.
+  circles.attr("cx", )
 }
 ```
