@@ -223,7 +223,7 @@ render([1,2], "green"); // now beacause of the exit function above only 2 rects 
 another example
 
 ```js
-var svg =  d3.select(body).append("svg");
+var svg =  d3.select('body').append("svg");
 svg.attr("width", 250);
 svg.attr("height", 250);
 
@@ -235,6 +235,21 @@ function render(data) {
   circles.enter().append("circle").attr("r", 10);
 
   // Update
-  circles.attr("cx", )
+  circles
+    .attr("cx", function(d) {return d.x;})
+    .attr("cy", function(d) {return d.y;});
+
+  // Exit
+  circles.exit().remove();
 }
+
+var myArrOfObjects = [
+  {x: 100, y:100},
+  {x: 130, y:120},
+  {x: 80, y:180},
+  {x: 180, y:80},
+  {x: 180, y:40}
+];
+
+render(myArrOfObjects);
 ```
