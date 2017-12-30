@@ -253,3 +253,28 @@ var myArrOfObjects = [
 
 render(myArrOfObjects);
 ```
+
+## Finding min and max in d3.
+
+```js
+
+d3.csv("dataFile.csv", type, function(data) {
+  var min = d3.min(data, function(d) { return d.sepal_length;});
+  var max = d3.max(data, function(d) { return d.sepal_length;});
+  console.log(min, max);
+});
+```
+
+## extent in d3
+this does the same thing like min and max
+
+
+## Adding classes through code
+so when we want to add class to the element we are creating we can simply add attribute
+```js
+var svg = d3.select("body").append("svg");
+
+svg.attr("height", 500).attr("width", 500).attr("class", "className1 classname2");
+
+```
+In above code the space separated classnames will be applied separately to the svg. We can use this to style normally as we do with CSS for other HTML elements.
