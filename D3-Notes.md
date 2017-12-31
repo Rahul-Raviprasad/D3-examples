@@ -8,6 +8,10 @@ d3.select("#myDiv")    = document.getElementById("myDiv")
 
 d3.selectAll().filter()
 
+## Few Data manipulation methods
+.attr -> this adds attributes to the selected elements
+.style -> this is used for adding css style
+.append -> adds html element to the selection as a child
 
 
 ```js
