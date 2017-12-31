@@ -1,5 +1,15 @@
 # Learnings and Tricks
 
+## Document traversal
+We can select all the elements in d3 in a way very similar to jQuery.
+d3.select("body")      = $("body")
+d3.selectAll(".class") = $(".class")
+d3.select("#myDiv")    = document.getElementById("myDiv")
+
+d3.selectAll().filter()
+
+
+
 ```js
 d3.csv("data.csv",type, function(anArrayOfObject) {
   anArrayOfObject.forEach(function(d) {
