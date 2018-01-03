@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>D3 Example</title>
+    <script src="https://d3js.org/d3.v3.js"></script>
+    <style>
+
+      body {
+        background: black;
+      }
+
+      circle {
+        fill: rgba(255, 255, 255, 0.2);
+      }
+
+    </style>
+  </head>
+  <body>
+    <script>
+
+      var outerWidth  = 1000;
+      var outerHeight = 500;
+      var margin = { left: -50, top: 0, right: -50, bottom: 0 };
+
+      var xColumn = "longitude";
+      var yColumn = "latitude";
+      var rColumn = "population";
+      var peoplePerPixel = 10000;
+
+      var innerWidth  = outerWidth  - margin.left - margin.right;
+      var innerHeight = outerHeight - margin.top  - margin.bottom;
+
+      var svg = d3.select("body").append("svg")
+        .attr("width",  outerWidth)
+        .attr("height", outerHeight);
+
+      var g = svg.append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+      var xScale = d3.scale.linear().range([0, innerWidth]);
+      var yScale = d3.scale.linear().range([innerHeight, 0]);
+      var rScale = d3.scale.sqrt();
+
+      function render(data){
+        console.log("hi" + JSON.stringify(data));
+
+        xScale.domain( d3.extent(data, function (d){ return d[xColumn]; }));
+        yScale.domain( d3.extent(data, function (d){ return d[yColumn]; }));
+        rScale.domain([0, d3.max(data, function (d){ return d[rColumn]; })]);
+
+        // Compute the size of the biggest circle as a function of peoplePerPixel.
+        var peopleMax = rScale.domain()[1];
+        var rMin = 0;
+        var rMax = Math.sqrt(peopleMax / (peoplePerPixel * Math.PI));
+        rScale.range([rMin, rMax]);
+
+        var circles = g.selectAll("circle").data(data);
+        circles.enter().append("circle");
+        circles
+          .attr("cx", function (d){ return xScale(d[xColumn]); })
+          .attr("cy", function (d){ return yScale(d[yColumn]); })
+          .attr("r",  function (d){ return rScale(d[rColumn]); });
+        circles.exit().remove();
+      }
+
+      function type(d){
+        d.latitude   = +d.latitude;
+        d.longitude  = +d.longitude;
+        d.population = +d.population;
+        return d;
+      }
+
+      d3.csv("geonames_cities100000.csv", type, render);
+
+    var reqData;
+    // d3.json("healthCenterCityWise.json", function(d) {
+    //
+    //   reqData = d.data.map(convertionFunc);
+    //   console.log(reqData);
+    //   return reqData;
+    // },type , render);
+
+
+    var test = [
+      [
+        "11",
+        "DELHI/NCR",
+        "AY19",
+        "Dev Nagar (Ayurvedic)",
+        "Double Storey Qtrs.No.141 Block No.12, (Opposite Mother Dairy) Dev Nagar, New Delhi-5.",
+        "3",
+        "ayurvedic",
+        "25860275",
+        "77.18402863",
+        "28.654448"
+      ],
+      [
+        "11",
+        "DELHI/NCR",
+        "AY3",
+        "Delhi Cantt (Ayurvedic)",
+        "Sadar Bazar, Delhi Cantt,Near Geeta Asharam,New Delhi-10",
+        "2",
+        "ayurvedic",
+        "25692914",
+        "77.12076569",
+        "28.589346"
+      ],
+      [
+        "11",
+        "DELHI/NCR",
+        "AY31",
+        "North Avenue (Ayur)",
+        "4-MP Flats, North Avenue, New Delhi",
+        "3",
+        "ayurvedic",
+        "23092794",
+        "77.19916534",
+        "28.618547"
+      ]
+    ];
+
+    function convertionFunc(d) {
+      var nd = {};
+      nd.longitude = d[8];
+      nd.latitude = d[9];
+      nd.population = d[5];
+      return nd;
+    }
+
+    var reqData = test.map(convertionFunc);
+  //  console.log(reqData);
+    //d3.json(reqData, type, render);
+
+    </script>
+  </body>
+</html>
