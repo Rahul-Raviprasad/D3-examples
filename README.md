@@ -28,6 +28,15 @@ Data visualization can be done as simply as with pen and paper.
 * Correlations
 * geographic
 
+### How to do Data Visualization
+* whats your goals
+* pinpoint your audience
+* align your content to goals and audience
+* Structure your story
+
+Doing this is not really easy
+finding people with data analysis, visualization, coding and designing skill is very difficult.
+
 
 ### Resources:
 1. https://bl.ocks.org/curran
