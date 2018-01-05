@@ -13,3 +13,31 @@ Use to tell a story.
 
 
 ### Data Viz tools with no budget
+infogram
+piktochart
+### presentation tools
+emaze
+haiku deck
+canva
+
+### Free fonts
+Font Squirrel
+Lost type co-op
+behance
+myfonts
+font fabric
+ultralinx
+dafont.com
+
+### Photo editing
+darktable
+fotor
+Pixlr
+sumopaint
+picmonkey
+picadilo
+GIMP
+
+
+## some sites for inspiration
+http://www.beutlerink.com/work
