@@ -292,3 +292,12 @@ svg.attr("height", 500).attr("width", 500).attr("class", "className1 classname2"
 
 ```
 In above code the space separated classnames will be applied separately to the svg. We can use this to style normally as we do with CSS for other HTML elements.
+
+## adding interactions
+we can have interactions with ".on" method. The on method takes 2 arguments, first the string name of the event like mouseover, keypress, click etc and second is the function that needs to be called once the event is triggered.
+
+```js
+someSelection.on("mouseover", function (d) {
+  // here d is the data of the node on which the event was triggered
+})
+```

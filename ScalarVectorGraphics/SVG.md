@@ -10,3 +10,10 @@
 ```
 
 sometimes we would like to move our svg elements together, then we should the group tag "g"
+
+```html
+<!--group of elements which go together -->
+<g transform="translate(100,50)">
+  ....
+</g>
+```
