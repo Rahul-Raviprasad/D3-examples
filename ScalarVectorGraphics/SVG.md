@@ -53,3 +53,8 @@ sometimes we would like to move our svg elements together, then we should the gr
   ....
 </g>
 ```
+
+## Using tools
+Many online tools allow you to draw like traditional paint and then download the svg file to be used later.
+Tools:-
+https://vectr.com/
