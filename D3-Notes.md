@@ -301,3 +301,11 @@ someSelection.on("mouseover", function (d) {
   // here d is the data of the node on which the event was triggered
 })
 ```
+
+## Structuring Data
+* d3.nest
+  * .enteries(data)
+  * .key(function(d){...})
+  * .rollup(function(a){...})
+* d3.stratify
+* d3.hierarchy
