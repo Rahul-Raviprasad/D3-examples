@@ -12,6 +12,26 @@ But there is a complexity limit
 * The image is cartoonish.. then we should compare the zipped file sizes and consider. -Maybe use SVG in such cases
 * If the image is like a raster image and pixel by pixel things are complex then it makes no sense to use SVG.
 
+## using SVG on the web
+* SVG as image on html
+```html
+<img src="nerds.svg" alt="nerds being cool">
+```
+
+* SVG as background image in CSS
+```CSS
+.main {
+  background-image: url(people.svg);
+}
+```
+* inline SVG in html
+like the most of the examples in this page.
+
+## performance
+SVG is pretty efficient already, but it can also be heavily optimized in multiple ways
+* it gzips very well. because it has a lot of repetitive strings.
+* svgo is great tool for optimizing by removing the least order numbers like 2.3345 is the 0.0045 accuracy really needed?
+
 
 There are only a handful of basic elements
 1. line
@@ -73,3 +93,9 @@ https://developer.mozilla.org/en-US/docs/Web/SVG/Element/use
 Many online tools allow you to draw like traditional paint and then download the svg file to be used later.
 Tools:-
 https://vectr.com/
+
+# resources
+https://css-tricks.com/mega-list-svg-information/
+jankfree.org
+advanceperformance audits with dev tools by paul irish
+weighting svg animation techniques with benchmarks
