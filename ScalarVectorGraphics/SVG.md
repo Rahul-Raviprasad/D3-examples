@@ -3,6 +3,16 @@
 It is similar to html , but is meant for drawing. so the elements would be like
 rect, circle, ellipse, polygon, path etc
 
+One of the advantages of svg is that for simple graphics, the file size is smaller and the quality is higher(best of both worlds)
+But there is a complexity limit
+
+### When to consider SVG
+* When the image or drawing is containing few basic shapes and colors - definitely go for SVG
+* When you are doing fancy stuff with Div and Css to create basic shapes, we can easily build a ice-cream or console remote with html and css, but in such cases we should rather think of using a professional tool like illustrator or vectr to create them in SVG as it makes more sense and can be changed or we cn increase the complexity further.
+* The image is cartoonish.. then we should compare the zipped file sizes and consider. -Maybe use SVG in such cases
+* If the image is like a raster image and pixel by pixel things are complex then it makes no sense to use SVG.
+
+
 There are only a handful of basic elements
 1. line
 2. rect
