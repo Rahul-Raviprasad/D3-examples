@@ -42,6 +42,7 @@ finding people with data analysis, visualization, coding and designing skill is 
 1. https://bl.ocks.org/curran
 2. https://github.com/curran/d3-in-motion
 3. https://bl.ocks.org/mbostock
+4. http://alignedleft.com/tutorials/d3/about
 
 ### Credits:
-A lot has been taken and practiced from the awesome open source works of Curran Kelleher and Mike Bostock. Thanks.
+A lot has been taken and practiced from the awesome open source works of Scott Murray, Curran Kelleher and of course Mike Bostock. Thanks.
