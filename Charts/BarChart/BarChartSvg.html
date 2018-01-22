@@ -47,10 +47,15 @@
       .attr("x", function(d, i) {
         return i * 21; // constant width bar width is 20 px and 1px gap between the bars
       })
-      .attr("y", 0)
+      .attr("y", function(d) {
+        return svgH - (d*4);  //Height minus data value
+      })
       .attr("width", 20)
       .attr("height", function(d) {
         return d*4;
+      })
+      .attr("fill", function(d){
+        return "rgb(0, "+d+", " + (d * 20) + ")";
       });
 
 
@@ -70,11 +75,33 @@
                 .attr("x", function(d, i) {
                   return i * (svgW / dataset.length);
                 })
-                .attr("y", 0)
                 .attr("width", svgW / dataset.length - barPadding)
+                .attr("y", function(d) {
+                  return svgH - (d*4);  //Height minus data value
+                })
                 .attr("height", function(d) {
                   return d*4;
-                });
+                })
+                .attr("fill", "teal");
+
+  // adding labels to this bar chart
+  svg2.selectAll("text")
+   .data(dataset)
+   .enter()
+   .append("text")
+   .text(function(d) {
+        return d;
+   })
+   .attr("x", function(d, i) {
+        return i * (svgW / dataset.length) + (svgW / dataset.length - barPadding) / 2;
+    })
+   .attr("y", function(d) {
+        return svgH - (d * 4) + 14;              // +14
+   })
+   .attr("font-family", "sans-serif")
+   .attr("font-size", "11px")
+   .attr("fill", "white")
+   .attr("text-anchor", "middle");
 
   </script>
 </body>
