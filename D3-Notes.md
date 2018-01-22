@@ -309,3 +309,18 @@ someSelection.on("mouseover", function (d) {
   * .rollup(function(a){...})
 * d3.stratify
 * d3.hierarchy
+
+
+## Handoff
+
+Many, but not all, D3 methods return a selection (or, really, reference to a selection), which enables the handy technique of method chaining. Typically, a method returns a reference to the element that it just acted upon, but not always.
+
+Important: When chaining methods, order matters. The output type of one method has to match the input type expected by the next method in the chain. If adjacent inputs and outputs are mismatched, the hand-off will be wrong and buggy.
+
+The API reference is your friend in this case. It contains detailed information on each method, including whether or not it returns a selection.
+
+old link: https://github.com/d3/d3/wiki/API-Reference
+
+D3 4.0: https://github.com/d3/d3/blob/master/API.md
+Changes in D3 4.0: https://github.com/d3/d3/blob/master/CHANGES.md
+D3 3.x: https://github.com/d3/d3-3.x-api-reference/blob/master/API-Reference.md
