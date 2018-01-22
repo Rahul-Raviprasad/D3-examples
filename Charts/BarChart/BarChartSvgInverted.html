@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+  <style>
+    div.bar {
+      display: inline-block;
+      width: 20px;
+      background-color: teal;
+      margin-right: 2px;
+    }
+    svg {
+      border: 1px solid black;
+    }
+  </style>
+  <script src="../../d3/d3.v3.min.js"></script>
+
+</head>
+<body>
+  <h3>Bar chart with Divs and d3</h3>
+
+  <script>
+  var dataset = [2, 3, 6, 20, 13, 5, 13, 14];
+
+  // SVG width and height
+  var svgW = 500;
+  var svgH = 100;
+
+  //Create SVG element
+  var svg = d3.select("body")
+            .append("svg")
+            .attr("width", svgW)
+            .attr("height", svgH);
+
+          /*  svg.selectAll("rect")
+             .data(dataset)
+             .enter()
+             .append("rect")
+             .attr("x", 0)
+             .attr("y", 0)
+             .attr("width", 20)
+             .attr("height", 100);*/
+
+  svg.selectAll("rect")
+      .data(dataset)
+      .enter()
+      .append("rect")
+      .attr("x", function(d, i) {
+        return i * 21; // constant width bar width is 20 px and 1px gap between the bars
+      })
+      .attr("y", 0)
+      .attr("width", 20)
+      .attr("height", function(d) {
+        return d*4;
+      });
+
+
+  // svg 2
+  var barPadding = 1;
+  //Create SVG element
+  var svg2 = d3.select("body")
+            .append("svg")
+            .attr("width", svgW)
+            .attr("height", svgH);
+
+
+            svg2.selectAll("rect")
+                .data(dataset)
+                .enter()
+                .append("rect")
+                .attr("x", function(d, i) {
+                  return i * (svgW / dataset.length);
+                })
+                .attr("y", 0)
+                .attr("width", svgW / dataset.length - barPadding)
+                .attr("height", function(d) {
+                  return d*4;
+                });
+
+  </script>
+</body>
+
+</html>
