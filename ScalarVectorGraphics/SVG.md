@@ -99,3 +99,6 @@ https://css-tricks.com/mega-list-svg-information/
 jankfree.org
 advanceperformance audits with dev tools by paul irish
 weighting svg animation techniques with benchmarks
+
+http://svgpocketguide.com/book/
+https://www.w3.org/Graphics/SVG/IG/resources/svgprimer.html
