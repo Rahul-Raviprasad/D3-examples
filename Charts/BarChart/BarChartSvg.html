@@ -61,7 +61,7 @@
                 .attr("x", function(d, i) {
                   return i * (svgW / dataset.length);
                 })
-                .attr("width", svgW / dataset.length - barPadding)
+                .attr("width", svgW / dataset.length - barPadding) // we want the bar width to adjust based on the dataset length,
                 .attr("y", function(d) {
                   return svgH - (d*4);  //Height minus data value
                 })
