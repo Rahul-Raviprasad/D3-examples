@@ -2,12 +2,6 @@
 <html>
 <head>
   <style>
-    div.bar {
-      display: inline-block;
-      width: 20px;
-      background-color: teal;
-      margin-right: 2px;
-    }
     svg {
       border: 1px solid black;
     }
@@ -31,14 +25,6 @@
             .attr("width", svgW)
             .attr("height", svgH);
 
-          /*  svg.selectAll("rect")
-             .data(dataset)
-             .enter()
-             .append("rect")
-             .attr("x", 0)
-             .attr("y", 0)
-             .attr("width", 20)
-             .attr("height", 100);*/
 
   svg.selectAll("rect")
       .data(dataset)

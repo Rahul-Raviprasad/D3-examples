@@ -2,21 +2,21 @@
 <html>
 <head>
   <style>
-    div.bar {
-      display: inline-block;
-      width: 20px;
-      background-color: teal;
-      margin-right: 2px;
-    }
     svg {
       border: 1px solid black;
+    }
+    rect {
+      fill: #673ab7;
     }
   </style>
   <script src="../../d3/d3.v3.min.js"></script>
 
 </head>
 <body>
-  <h3>Bar chart with Divs and d3</h3>
+  <h3>Bar chart with svg and d3</h3>
+
+  <p>This is a very simple example. In this we don't handle changing the dataset to a particular range, scaling and displaying the axes for the bar chart.</p>
+
 
   <script>
   var dataset = [2, 3, 6, 20, 13, 5, 13, 14];
@@ -31,24 +31,25 @@
             .attr("width", svgW)
             .attr("height", svgH);
 
-          /*  svg.selectAll("rect")
-             .data(dataset)
-             .enter()
-             .append("rect")
-             .attr("x", 0)
-             .attr("y", 0)
-             .attr("width", 20)
-             .attr("height", 100);*/
+  /*
+    The usual pattern, selectAll is used to select all the elements "rect" in this case with current selection(body).
+    We know currently there aren't any. So basically it is currently holding dummy rects for us, once we attach data using data() method
+    .enter() is where this is all happening
+    .append actually attaches the "rect"s equal to the count of datasets length and attaches it the DOM and we can now inspect and see it.
+    .attr and .style are simply for adding class and styling which is normal CSS
+
+    This will display an inverted Bar chart as normally the axes in compputer graphics are taken from the left top corner of the screen.
+  */
 
   svg.selectAll("rect")
       .data(dataset)
       .enter()
       .append("rect")
       .attr("x", function(d, i) {
-        return i * 21; // constant width bar width is 20 px and 1px gap between the bars
+        return i * 31; // constant width bar width is 30 px and 1px gap between the bars
       })
       .attr("y", 0)
-      .attr("width", 20)
+      .attr("width", 30)
       .attr("height", function(d) {
         return d*4;
       });

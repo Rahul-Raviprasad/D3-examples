@@ -2,9 +2,12 @@
 <html>
 <head>
   <style>
+    /* Style for the individual bars.
+      adjust the widths here
+     */
     div.bar {
       display: inline-block;
-      width: 20px;
+      width: 30px;
       background-color: teal;
       margin-right: 2px;
     }
@@ -13,18 +16,27 @@
 
 </head>
 <body>
-  <h3>Bar chart with Divs and d3</h3>
-  
+  <h3>Bar chart with Divs and D3</h3>
+
+  <p>This is a very simple example. In this we don't handle changing the dataset to a particular range, scaling and displaying the axes for the bar chart.</p>
+
   <script>
   var dataset = [2, 3, 6, 20, 13, 5, 13, 14];
 
+  /*
+    the usual pattern, selectAll is used to select all the elements "div" in this case with current selection(body).
+    We know currently there aren't any. So basically it is currently holding dummy divs for us once with attach data using data() method
+    .enter() is where this is all happening
+    .append actually attaches the "div"s equal to the count of datasets and attaches it the DOM and we can now inspect and see it.
+    .attr and .style are simply for adding class and styling which is normal CSS
+  */
   d3.select("body").selectAll("div")
       .data(dataset)
       .enter()
       .append("div")
       .attr("class", "bar")
       .style("height", function(d) {
-          var barHeight = d * 5;
+          var barHeight = d * 10;
           return barHeight + "px";
       });
 
