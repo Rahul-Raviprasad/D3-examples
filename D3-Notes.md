@@ -50,6 +50,23 @@ function type(d) {
 
 ## Scales
 
+“Scales are functions that map from an input domain to an output range.” - Mike Bostock
+
+D3 scales are functions whose parameters you define. Once they are created, you call the scale function, pass it a data value, and it nicely returns a scaled output value.
+
+A scale is a mathematical relationship, with no direct visual output, so one should not confuse between a scale and axis. Although they are related.
+
+#### Domain
+A scale’s input domain is the range of possible input data values.
+
+#### Range
+A scale’s output range is the range of possible output values, commonly used as display values in pixel units. The output range is completely up to you, as the information designer.
+
+#### Normalization
+Normalization is the process of mapping a numeric value to a new value between 0 and 1, based on the possible minimum and maximum values.
+
+With linear scales, we are just letting D3 handle the math of the normalization process. The input value is normalized according to the domain, and then the normalized value is scaled to the output range.
+
 ```js
 //In D3 we use scale functions to convert our data space to pixel spaces.
 //d3.scale.linear() will return an instance of a scale.
