@@ -5,7 +5,19 @@
     svg {
       border: 1px solid black;
     }
+
+    .axis path, .axis line {
+      fill: none;
+      stroke: black;
+      shape-rendering: crispEdges;
+    }
+
+    .axis text {
+      font-family: sans-serif;
+      font-size: 11px;
+    }
   </style>
+
   <script src="../../d3/d3.v3.min.js"></script>
 
 </head>
@@ -29,14 +41,16 @@
 
   // SVG width and height
   var svgW = 500;
-  var svgH = 100;
-  var padding = 20;
+  var svgH = 500;
+  var padding = 30;
 
   //Create SVG element
   var svg = d3.select("body")
             .append("svg")
             .attr("width", svgW)
             .attr("height", svgH);
+
+
 
   var xScale = d3.scale.linear()
                      .domain([0, d3.max(dataset, function(d) { return d[0]; })])
@@ -45,6 +59,15 @@
   var yScale = d3.scale.linear()
                      .domain([0, d3.max(dataset, function(d) { return d[1]; })])
                      .range([svgH-padding, padding]); // reverse as normal y axis and computer science y axis are opposite.
+
+  var xAxis = d3.svg.axis()
+                 .scale(xScale)
+                 .orient("bottom")
+                 .ticks(5);
+  var yAxis = d3.svg.axis()
+                 .scale(yScale)
+                 .orient("left")
+                 .ticks(5);
 
   svg.selectAll("circle")
       .data(dataset)
@@ -81,6 +104,16 @@
    .attr("font-family", "sans-serif")
    .attr("font-size", "11px")
    .attr("fill", "red");
+
+  svg.append("g")
+    .attr("class", "axis")  //Assign "axis" class
+    .attr("transform", "translate(0," + (svgH - padding) + ")")
+    .call(xAxis);
+
+  svg.append("g")
+    .attr("class", "axis")
+    .attr("transform", "translate(" + padding + ",0)")
+    .call(yAxis);
 
   </script>
 </body>

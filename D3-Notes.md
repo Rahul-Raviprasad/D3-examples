@@ -56,6 +56,15 @@ D3 scales are functions whose parameters you define. Once they are created, you 
 
 A scale is a mathematical relationship, with no direct visual output, so one should not confuse between a scale and axis. Although they are related.
 
+#### Different Scales
+* identity — A 1:1 scale, useful primarily for pixel values
+* sqrt — A square root scale
+* pow — A power scale
+* log — A logarithmic scale
+* quantize — A linear scale with discrete values for its output range, for when you want to sort data into “buckets”
+* quantile — Similar to above, but with discrete values for its input domain (when you already have “buckets”)
+* ordinal — Ordinal scales use non-quantitative values (like category names) for output; perfect for comparing apples and oranges
+
 #### Domain
 A scale’s input domain is the range of possible input data values.
 
