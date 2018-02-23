@@ -286,6 +286,7 @@ render(myArrOfObjects);
 ```
 
 ## Finding min and max in d3.
+Sometimes knowing the min and max of your data is helpful, especially in applications where the size might vary in the future or you are trying to build a widget or visualization which can allow users to input any data and see. In such cases if you want to use domain and range functions, know the min and max values of the input data will come in handy.
 
 ```js
 
@@ -295,6 +296,16 @@ d3.csv("dataFile.csv", type, function(data) {
   console.log(min, max);
 });
 ```
+In the above example code snippet, image you have the iris data set then, we are finding the mininum and maximum of the sepal length values. And presume we want to display the sepal_length in x or y axis and want to scale, we can write this as
+
+```js
+
+var sepal_length_scale = d3.scale.linear()
+                                  .domain([0, d3.max(dataset, function(d){return[0]})]) //same above written in diff flavor
+                                  .range([0,w]); // w is what we want to set the width of visualization to be.
+                                  //generally w is svg's width, if we talk of height we could replace with h
+```
+Note in the above example, I only used max, this could be improved to utilize min as well instead of zero.
 
 ## extent in d3
 this does the same thing like min and max
