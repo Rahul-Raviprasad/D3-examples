@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+  <style>
+    svg {
+      border: 1px solid black;
+    }
+  </style>
+  <script src="../../d3/d3.v3.min.js"></script>
+
+</head>
+<body>
+  <h3>Basic scatter plot in d3</h3>
+  <p>The x and y axis is from the top left corner of the screen as usual for computer graphics</p>
+  <script>
+  //              [ x,      y ]
+  var dataset = [
+                  [ 5,     20 ],
+                  [ 480,   90 ],
+                  [ 250,   50 ],
+                  [ 100,   33 ],
+                  [ 330,   95 ],
+                  [ 410,   12 ],
+                  [ 475,   44 ],
+                  [ 25,    67 ],
+                  [ 85,    21 ],
+                  [ 220,   88 ]
+              ];
+
+  // SVG width and height
+  var svgW = 500;
+  var svgH = 100;
+  var padding = 20;
+
+  //Create SVG element
+  var svg = d3.select("body")
+            .append("svg")
+            .attr("width", svgW)
+            .attr("height", svgH);
+
+  var xScale = d3.scale.linear()
+                     .domain([0, d3.max(dataset, function(d) { return d[0]; })])
+                     .range([padding, svgW-(padding*2)]); // more padding for text getting cut off on the right.
+
+  var yScale = d3.scale.linear()
+                     .domain([0, d3.max(dataset, function(d) { return d[1]; })])
+                     .range([svgH-padding, padding]); // reverse as normal y axis and computer science y axis are opposite.
+
+  svg.selectAll("circle")
+      .data(dataset)
+      .enter()
+      .append("circle")
+      .attr("cx", function(d) {
+        return xScale(d[0]);
+      })
+      .attr("cy", function(d) {
+        return yScale(d[1]);
+      })
+      .attr("r", 5)
+      .attr("height", function(d) {
+        return d*4;
+      })
+      .attr("fill", function(d){
+        return "rgb(0, "+d+", " + (d * 20) + ")";
+      });
+
+  // add labels to the points
+  svg.selectAll("text")
+   .data(dataset)
+   .enter()
+   .append("text")
+   .text(function(d) {
+        return d[0] + "," + d[1];
+   })
+   .attr("x", function(d) {
+        return xScale(d[0])+5;
+   })
+   .attr("y", function(d) {
+        return yScale(d[1])-5;
+   })
+   .attr("font-family", "sans-serif")
+   .attr("font-size", "11px")
+   .attr("fill", "red");
+
+  </script>
+</body>
+
+</html>
