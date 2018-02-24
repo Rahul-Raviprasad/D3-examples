@@ -348,6 +348,18 @@ someSelection.on("mouseover", function (d) {
 * d3.hierarchy
 
 
+## Transitions
+
+A transition is a selection-like interface for animating changes to the DOM. Instead of applying changes instantaneously, transitions smoothly interpolate the DOM from its current state to the desired target state over a given duration.
+
+To apply a transition, select elements, call selection.transition, and then make the desired changes. For example:
+
+```js
+d3.select("body")
+  .transition()
+    .style("background-color", "red");
+```
+
 ## Handoff
 
 Many, but not all, D3 methods return a selection (or, really, reference to a selection), which enables the handy technique of method chaining. Typically, a method returns a reference to the element that it just acted upon, but not always.
