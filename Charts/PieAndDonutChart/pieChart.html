@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://getbootstrap.com/examples/justified-nav/justified-nav.css" rel="stylesheet">
+
+    <style>
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+
+            <svg id="svg_donut" width="600" height="400"></svg>
+            <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+            <script>
+            // Arcs are drawn using 4 main parameters:
+            // startAngle, endAngle, innerRadius and outerRadius.
+            // The angles are given in radians rather than degrees,
+            // so a full circle is 2 π instead of 360 degrees.
+
+            var cScale = d3.scale.linear().domain([0, 100]).range([0, 2 * Math.PI]);
+            var data = [[0,50,"#AA8888"], [50,75,"#88BB88"], [75,100,"#8888CC"]]
+
+            var vis = d3.select("#svg_donut");
+
+            var arc = d3.svg.arc()
+            .innerRadius(50) // set this 0 for pie chart
+            .outerRadius(100)
+            .startAngle(function(d){return cScale(d[0]);})
+            .endAngle(function(d){return cScale(d[1]);});
+
+            vis.selectAll("path")
+            .data(data)
+            .enter()
+            .append("path")
+            .attr("d", arc)
+            .style("fill", function(d){return d[2];})
+            .attr("transform", "translate(300,200)");
+
+            </script>
+        </div>
+    </div>
+</body>
+</html>
