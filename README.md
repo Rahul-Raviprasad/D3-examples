@@ -38,6 +38,16 @@ Doing this is not really easy
 finding people with data analysis, visualization, coding and designing skill is very difficult.
 
 
+### Charting libraries built on top of D3.
+1. https://github.com/novus/nvd3
+2. https://github.com/tenXer/xcharts/
+http://tenxer.github.io/xcharts/docs/
+3. https://github.com/pmsi-alignalytics/dimple/
+
+4. http://jsnetworkx.org/
+5. https://square.github.io/cubism/
+6. https://square.github.io/crossfilter/
+
 ### Resources:
 1. https://bl.ocks.org/curran
 2. https://github.com/curran/d3-in-motion
