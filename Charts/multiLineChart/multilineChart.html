@@ -116,6 +116,7 @@
                             return yScale(d.sale);
                         })
                         .interpolate("basis");
+                        // by default the interpolation would be linear, changing to basis makes the flow smoother.
 
                     vis.append('svg:path')
                         .attr('d', lineGen(data))
