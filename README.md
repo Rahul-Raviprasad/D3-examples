@@ -43,7 +43,6 @@ finding people with data analysis, visualization, coding and designing skill is 
 2. https://github.com/tenXer/xcharts/
 http://tenxer.github.io/xcharts/docs/
 3. https://github.com/pmsi-alignalytics/dimple/
-
 4. http://jsnetworkx.org/
 5. https://square.github.io/cubism/
 6. https://square.github.io/crossfilter/
